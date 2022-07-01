@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jantar</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h1 {
+            background-color: black;
+            color: white;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        button {
+            margin: 10px auto;
+            width: 200px;
+            height: 20px;
+            border-radius: 50px;
+            border: 1px solid #3c70ff;
+            background-color: #fff;
+            color: #3c70ff;
+            cursor: pointer;
+        }
+
+        button:active {
+            background-color: #3c70ff;
+            color: #fff;
+        }
+
+        .total {
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 16px;
+        }
+
+        .font-6 {
+            font-size: 6px;
+        }
+
+    </style>
+</head>
+    <div class="container">
+        <h1>Restaurante Ki-Sabor</h1>
+        <label for="">Valor do jantar:</label>
+        <input type="number" name="number" class="jantar" placeholder="Insira o valor da conta">
+        <button>Calcular valor</button>
+        <div class="total">
+            <span>Total a pagar: R$ <span class="valor">0,00</span></span>
+            <span class="font-6">*Incluso taxa do graçon de 10%</span>
+        </div>
+    </div>
+<body>
+    <script>
+        let btn = document.querySelector('button');
+
+        function calculaJantar(){
+            return document.querySelector('.valor').innerHTML
+        }
+
+        let vlJantar = document.querySelector('.jantar')
+        const txaGarcon = vlJantar * 0.10;
+        total = vlJantar + txaGarcon;
+
+    </script>
+</body>
+</html>
