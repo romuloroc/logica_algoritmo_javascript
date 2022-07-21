@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exemplo 2.3</title>
+</head>
+<body>
+    <h1>Restaurante JS</h1>
+    <form>
+        <p> Buffet por Quilo R$:
+            <input type="text" id="inQuilo" required>
+        </p>
+        <p> Consumo do Cliente (gr):
+            <input type="number" id="inConsumo" min="0" step="0.01" required>
+        </p>
+        <input type="submit" value="Calcular Preço" min="0">
+    </form>
+    <h3></h3>
+
+    <script>
+        const frm = document.querySelector("form")
+        const resp = document.querySelector("h3")
+
+        frm.addEventListener("submit", (e) => {
+            const quilo = frm.inQuilo.value
+            const consumo = Number(frm.inConsumo.value)
+
+            const valor = (quilo/1000)*consumo
+            resp.innerText = `Valor a pagar R$ ${valor.toFixed(2)}`
+
+            e.preventDefault()
+        })
+    </script>
+</body>
+</html>
