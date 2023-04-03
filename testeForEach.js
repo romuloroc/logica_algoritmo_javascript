@@ -17,6 +17,6 @@ function nossoForEach(arr, funcao) {
     }
 }
 
-nossoForEachnomes(nomes, function(nome, i){
+nossoForEach(nomes, function(nome, i){
     console.log(nome, i)
 })
