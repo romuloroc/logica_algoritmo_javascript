@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Personalizado - Demo</title>
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #007bff;
+        }
+
+        .demo-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .demo-section h2 {
+            color: #555;
+            margin-top: 0;
+        }
+
+        /* Estilo para select nativo padrão */
+        .native-select {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            background-color: white;
+        }
+
+        /* Estilo para select personalizado como caixa */
+        .custom-select-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .custom-select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 16px;
+            border: 2px solid #007bff;
+            border-radius: 10px;
+            background-color: #f8f9fa;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="8"><path fill="%23007bff" d="M0 0l6 6 6-6z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .custom-select:hover {
+            border-color: #0056b3;
+            background-color: #e9ecef;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,123,255,0.3);
+        }
+
+        .custom-select:focus {
+            outline: none;
+            border-color: #0056b3;
+            box-shadow: 0 0 0 3px rgba(0,123,255,0.25);
+        }
+
+        /* Estilo alternativo - select como botões em caixa */
+        .button-select-container {
+            border: 2px solid #28a745;
+            border-radius: 10px;
+            padding: 15px;
+            background-color: #f8fff9;
+        }
+
+        .button-select-label {
+            font-weight: bold;
+            color: #155724;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .button-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        .option-button {
+            padding: 12px 16px;
+            border: 2px solid #28a745;
+            border-radius: 6px;
+            background-color: white;
+            color: #28a745;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s ease;
+            font-size: 14px;
+        }
+
+        .option-button:hover {
+            background-color: #28a745;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .option-button.selected {
+            background-color: #28a745;
+            color: white;
+            font-weight: bold;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e7f3ff;
+            border-left: 4px solid #007bff;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Personalização de Select/Option - Demonstração</h1>
+        
+        <div class="demo-section">
+            <h2>1. Select Nativo Padrão (Dropdown Cascata)</h2>
+            <label for="native-select">Escolha uma opção:</label>
+            <select id="native-select" class="native-select">
+                <option value="">Selecione uma opção...</option>
+                <option value="opcao1">Opção 1 - JavaScript</option>
+                <option value="opcao2">Opção 2 - HTML</option>
+                <option value="opcao3">Opção 3 - CSS</option>
+                <option value="opcao4">Opção 4 - React</option>
+                <option value="opcao5">Opção 5 - Node.js</option>
+            </select>
+        </div>
+
+        <div class="demo-section">
+            <h2>2. Select Personalizado (Estilo Caixa)</h2>
+            <label for="custom-select">Escolha uma tecnologia:</label>
+            <div class="custom-select-container">
+                <select id="custom-select" class="custom-select">
+                    <option value="">Selecione uma tecnologia...</option>
+                    <option value="javascript">JavaScript - Linguagem de programação</option>
+                    <option value="html">HTML - Linguagem de marcação</option>
+                    <option value="css">CSS - Folhas de estilo</option>
+                    <option value="react">React - Biblioteca JavaScript</option>
+                    <option value="nodejs">Node.js - Runtime JavaScript</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>3. Alternativa com Botões (Estilo Caixa de Opções)</h2>
+            <div class="button-select-container">
+                <label class="button-select-label">Escolha seu nível de experiência:</label>
+                <div class="button-options">
+                    <button type="button" class="option-button" data-value="iniciante">Iniciante</button>
+                    <button type="button" class="option-button" data-value="intermediario">Intermediário</button>
+                    <button type="button" class="option-button" data-value="avancado">Avançado</button>
+                    <button type="button" class="option-button" data-value="expert">Expert</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="result" id="result">
+            <strong>Resultado:</strong> Nenhuma seleção feita ainda.
+        </div>
+    </div>
+
+    <script>
+        // Elementos do DOM
+        const nativeSelect = document.getElementById('native-select');
+        const customSelect = document.getElementById('custom-select');
+        const buttonOptions = document.querySelectorAll('.option-button');
+        const resultDiv = document.getElementById('result');
+
+        // Função para atualizar o resultado
+        function updateResult(type, value) {
+            const messages = {
+                'native': `Select Nativo: "${value}" selecionado`,
+                'custom': `Select Personalizado: "${value}" selecionado`,
+                'button': `Botões: "${value}" selecionado`
+            };
+            
+            resultDiv.innerHTML = `<strong>Resultado:</strong> ${messages[type]}`;
+        }
+
+        // Event listeners para select nativo
+        nativeSelect.addEventListener('change', function() {
+            if (this.value) {
+                updateResult('native', this.options[this.selectedIndex].text);
+            }
+        });
+
+        // Event listeners para select personalizado
+        customSelect.addEventListener('change', function() {
+            if (this.value) {
+                updateResult('custom', this.options[this.selectedIndex].text);
+            }
+        });
+
+        // Event listeners para botões
+        buttonOptions.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove seleção anterior
+                buttonOptions.forEach(btn => btn.classList.remove('selected'));
+                
+                // Adiciona seleção atual
+                this.classList.add('selected');
+                
+                // Atualiza resultado
+                updateResult('button', this.textContent);
+            });
+        });
+
+        // Adiciona efeito visual ao hover nos selects
+        [nativeSelect, customSelect].forEach(select => {
+            select.addEventListener('focus', function() {
+                this.style.transform = 'scale(1.02)';
+            });
+            
+            select.addEventListener('blur', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

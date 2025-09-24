@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Personalizado - Estilo Caixa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+            font-size: 16px;
+        }
+
+        /* TÉCNICA PRINCIPAL: Personalização do Select Nativo */
+        .custom-select {
+            /* Remove a aparência padrão do browser */
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            
+            /* Estilização customizada */
+            width: 100%;
+            padding: 15px 50px 15px 20px;
+            font-size: 16px;
+            font-weight: 500;
+            
+            /* Bordas e fundo estilo "caixa" */
+            border: 3px solid #667eea;
+            border-radius: 15px;
+            background-color: #f8f9ff;
+            
+            /* Cursor e transições */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            
+            /* Ícone personalizado (seta) */
+            background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23667eea" d="M2 0L0 2h4zm0 5L0 3h4z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 15px;
+        }
+
+        /* Efeitos de hover e focus */
+        .custom-select:hover {
+            border-color: #5a67d8;
+            background-color: #edf2ff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .custom-select:focus {
+            outline: none;
+            border-color: #4c51bf;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.3);
+            background-color: #edf2ff;
+        }
+
+        /* Estilização das opções (limitada no CSS) */
+        .custom-select option {
+            padding: 10px;
+            background-color: white;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .custom-select option:checked {
+            background-color: #667eea;
+            color: white;
+        }
+
+        /* Resultado da seleção */
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            color: #2d3748;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Código de demonstração */
+        .code-section {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #1a202c;
+            border-radius: 10px;
+            color: #e2e8f0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+        }
+
+        .code-section h3 {
+            color: #90cdf4;
+            margin-bottom: 15px;
+        }
+
+        .code {
+            white-space: pre-wrap;
+            line-height: 1.5;
+        }
+
+        .css-property {
+            color: #f687b3;
+        }
+
+        .css-value {
+            color: #68d391;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Select Personalizado</h1>
+        
+        <div class="form-group">
+            <label for="tecnologia">Escolha sua tecnologia favorita:</label>
+            <select id="tecnologia" class="custom-select">
+                <option value="">-- Selecione uma opção --</option>
+                <option value="javascript">🟨 JavaScript</option>
+                <option value="python">🐍 Python</option>
+                <option value="java">☕ Java</option>
+                <option value="csharp">🟣 C#</option>
+                <option value="react">⚛️ React</option>
+                <option value="vue">💚 Vue.js</option>
+                <option value="angular">🅰️ Angular</option>
+                <option value="nodejs">🟢 Node.js</option>
+            </select>
+        </div>
+
+        <div class="result" id="resultado">
+            Selecione uma tecnologia para ver o resultado aqui
+        </div>
+
+        <div class="code-section">
+            <h3>💡 Principais propriedades CSS utilizadas:</h3>
+            <div class="code">
+<span class="css-property">appearance</span>: <span class="css-value">none</span>; <em>/* Remove aparência nativa */</em>
+<span class="css-property">-webkit-appearance</span>: <span class="css-value">none</span>; <em>/* Safari/Chrome */</em>
+<span class="css-property">-moz-appearance</span>: <span class="css-value">none</span>; <em>/* Firefox */</em>
+
+<span class="css-property">border</span>: <span class="css-value">3px solid #667eea</span>; <em>/* Borda personalizada */</em>
+<span class="css-property">border-radius</span>: <span class="css-value">15px</span>; <em>/* Cantos arredondados */</em>
+<span class="css-property">padding</span>: <span class="css-value">15px 50px 15px 20px</span>; <em>/* Espaçamento interno */</em>
+
+<span class="css-property">background-image</span>: <span class="css-value">url('data:image/svg+xml...')</span>; <em>/* Ícone customizado */</em>
+<span class="css-property">background-position</span>: <span class="css-value">right 15px center</span>; <em>/* Posição do ícone */</em>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const select = document.getElementById('tecnologia');
+        const resultado = document.getElementById('resultado');
+
+        select.addEventListener('change', function() {
+            if (this.value) {
+                const textoSelecionado = this.options[this.selectedIndex].text;
+                resultado.innerHTML = `
+                    <strong>✅ Selecionado:</strong> ${textoSelecionado}<br>
+                    <small>Valor: "${this.value}"</small>
+                `;
+                resultado.style.background = 'linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%)';
+            } else {
+                resultado.innerHTML = 'Selecione uma tecnologia para ver o resultado aqui';
+                resultado.style.background = 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)';
+            }
+        });
+
+        // Efeito visual adicional
+        select.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.02)';
+        });
+
+        select.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+    </script>
+</body>
+</html>
